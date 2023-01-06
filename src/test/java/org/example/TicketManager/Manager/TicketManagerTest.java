@@ -19,22 +19,58 @@ public class TicketManagerTest {
     Ticket ticket10 = new Ticket(10, 12000, "DME", "UFA", 140);
 
     TicketRepository repo = new TicketRepository();
-    TicketManager manager = new TicketManager();
+    TicketManager manager = new TicketManager(repo);
 
 
     @Test
-    public void shouldMatchByAirport(){
+    public void shouldAdd (){
 
-        repo.save(ticket1);
-        repo.save(ticket2);
-        repo.save(ticket3);
-        repo.save(ticket4);
-        repo.save(ticket5);
-        repo.save(ticket6);
-        repo.save(ticket7);
-        repo.save(ticket8);
-        repo.save(ticket9);
-        repo.save(ticket10);
+        manager.add(ticket1);
+        manager.add(ticket2);
+
+        Ticket [] expected = {ticket1, ticket2};
+        Ticket [] actual = repo.getTickets();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMatchByAirportIfNo(){
+
+        manager.add (ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
+
+
+        manager.matches(ticket3, "DME", "UFA" );
+
+
+        Boolean expected = false;
+        Boolean actual = manager.matches(ticket3, "DME", "UFA" );
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMatchByAirportIfYes(){
+
+        manager.add (ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
 
 
         manager.matches(ticket1, "DME", "UFA" );
@@ -47,27 +83,71 @@ public class TicketManagerTest {
     }
 
     @Test
-    public void shouldFindByAirport(){
+    public void shouldFindByAirportIfSome(){
 
-        TicketRepository repo = new TicketRepository();
-        TicketManager manager = new TicketManager();
-
-        repo.save(ticket1);
-        repo.save(ticket2);
-        repo.save(ticket3);
-        repo.save(ticket4);
-        repo.save(ticket5);
-        repo.save(ticket6);
-        repo.save(ticket7);
-        repo.save(ticket8);
-        repo.save(ticket9);
-        repo.save(ticket10);
+        manager.add (ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
 
         manager.searchBy("DME", "UFA");
 
 
-        Ticket [] expected = {ticket1, ticket5, ticket6, ticket8, ticket10};
+        Ticket [] expected = {ticket10, ticket1, ticket5, ticket6, ticket8};
         Ticket [] actual = manager.searchBy("DME", "UFA");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindByAirportIfOne(){
+
+        manager.add (ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
+
+        manager.searchBy("SVO", "SVX");
+
+
+        Ticket [] expected = {ticket3};
+        Ticket [] actual = manager.searchBy("SVO", "SVX");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindByAirportIfNo(){
+
+        manager.add (ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
+
+        manager.searchBy("DME", "SVX");
+
+
+        Ticket [] expected = { };
+        Ticket [] actual = manager.searchBy("DME", "SVX");
+
 
         Assertions.assertArrayEquals(expected, actual);
     }

@@ -3,14 +3,22 @@ package org.example.TicketManager.Manager;
 import org.example.TicketManager.Ticket;
 import org.example.TicketManager.TicketRepository;
 
+import java.util.Arrays;
+
 public class TicketManager {
 
-    TicketRepository repo = new TicketRepository();
+    private TicketRepository repo;
+
+    public TicketManager(TicketRepository repo) {
+        this.repo = repo;
+    }
+
+    public void add(Ticket ticket) {
+        repo.save(ticket);
+    }
 
     public boolean matches(Ticket ticket, String search1, String search2) {
-        if (ticket.getDepartureAirport().contains(search1)) {
-            return true;
-        } else if (ticket.getArrivalAirport().contains(search2)) {
+        if (ticket.getDepartureAirport().contains(search1)&&ticket.getArrivalAirport().contains(search2)){
             return true;
         } else {
             return false;
@@ -30,9 +38,10 @@ public class TicketManager {
                 }
                 tmp[tmp.length - 1] = ticket;
                 result = tmp;
+
             }
 
-        }
+        } Arrays.sort (result);
         return result;
     }
 }
