@@ -22,21 +22,21 @@ public class TicketManagerTest {
 
 
     @Test
-    public void shouldAdd (){
+    public void shouldAdd() {
 
         manager.add(ticket1);
         manager.add(ticket2);
 
-        Ticket [] expected = {ticket1, ticket2};
-        Ticket [] actual = repo.getTickets();
+        Ticket[] expected = {ticket1, ticket2};
+        Ticket[] actual = repo.getTickets();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldMatchByAirportIfNo(){
+    public void shouldMatchByAirportIfNo() {
 
-        manager.add (ticket1);
+        manager.add(ticket1);
         manager.add(ticket2);
         manager.add(ticket3);
         manager.add(ticket4);
@@ -48,19 +48,19 @@ public class TicketManagerTest {
         manager.add(ticket10);
 
 
-        manager.matches(ticket3, "DME", "UFA" );
+        manager.matches(ticket3, "DME", "UFA");
 
 
         Boolean expected = false;
-        Boolean actual = manager.matches(ticket3, "DME", "UFA" );
+        Boolean actual = manager.matches(ticket3, "DME", "UFA");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldMatchByAirportIfYes(){
+    public void shouldMatchByAirportIfYes() {
 
-        manager.add (ticket1);
+        manager.add(ticket1);
         manager.add(ticket2);
         manager.add(ticket3);
         manager.add(ticket4);
@@ -72,19 +72,19 @@ public class TicketManagerTest {
         manager.add(ticket10);
 
 
-        manager.matches(ticket1, "DME", "UFA" );
+        manager.matches(ticket1, "DME", "UFA");
 
 
         Boolean expected = true;
-        Boolean actual = manager.matches(ticket1, "DME", "UFA" );
+        Boolean actual = manager.matches(ticket1, "DME", "UFA");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldFindByAirportIfSome(){
+    public void shouldFindByAirportIfSome() {
 
-        manager.add (ticket1);
+        manager.add(ticket1);
         manager.add(ticket2);
         manager.add(ticket3);
         manager.add(ticket4);
@@ -98,16 +98,16 @@ public class TicketManagerTest {
         manager.searchBy("DME", "UFA");
 
 
-        Ticket [] expected = {ticket10, ticket1, ticket5, ticket6, ticket8};
-        Ticket [] actual = manager.searchBy("DME", "UFA");
+        Ticket[] expected = {ticket10, ticket1, ticket5, ticket6, ticket8};
+        Ticket[] actual = manager.searchBy("DME", "UFA");
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldFindByAirportIfOne(){
+    public void shouldFindByAirportIfOne() {
 
-        manager.add (ticket1);
+        manager.add(ticket1);
         manager.add(ticket2);
         manager.add(ticket3);
         manager.add(ticket4);
@@ -121,16 +121,16 @@ public class TicketManagerTest {
         manager.searchBy("SVO", "SVX");
 
 
-        Ticket [] expected = {ticket3};
-        Ticket [] actual = manager.searchBy("SVO", "SVX");
+        Ticket[] expected = {ticket3};
+        Ticket[] actual = manager.searchBy("SVO", "SVX");
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldFindByAirportIfNo(){
+    public void shouldFindByAirportIfNo() {
 
-        manager.add (ticket1);
+        manager.add(ticket1);
         manager.add(ticket2);
         manager.add(ticket3);
         manager.add(ticket4);
@@ -144,8 +144,8 @@ public class TicketManagerTest {
         manager.searchBy("DME", "SVX");
 
 
-        Ticket [] expected = { };
-        Ticket [] actual = manager.searchBy("DME", "SVX");
+        Ticket[] expected = {};
+        Ticket[] actual = manager.searchBy("DME", "SVX");
 
 
         Assertions.assertArrayEquals(expected, actual);

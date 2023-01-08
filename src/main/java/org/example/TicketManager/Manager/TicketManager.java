@@ -18,7 +18,7 @@ public class TicketManager {
     }
 
     public boolean matches(Ticket ticket, String search1, String search2) {
-        if (ticket.getDepartureAirport().contains(search1)&&ticket.getArrivalAirport().contains(search2)){
+        if (ticket.getDepartureAirport().contains(search1) && ticket.getArrivalAirport().contains(search2)) {
             return true;
         } else {
             return false;
@@ -41,7 +41,8 @@ public class TicketManager {
 
             }
 
-        } Arrays.sort (result);
+        }
+        Arrays.sort(result);
         return result;
     }
 }
