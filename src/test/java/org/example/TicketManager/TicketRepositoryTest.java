@@ -2,7 +2,7 @@ package org.example.TicketManager;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.Test;
+
 
 public class TicketRepositoryTest {
 
@@ -18,7 +18,7 @@ public class TicketRepositoryTest {
     Ticket ticket10 = new Ticket(10, 12000, "LED", "DME", 140);
 
     @Test
-    public void shouldSaveOne () {
+    public void shouldSaveOne() {
         TicketRepository repo = new TicketRepository();
         repo.save(ticket1);
         //repo.save(ticket2);
@@ -26,17 +26,17 @@ public class TicketRepositoryTest {
         //repo.save(ticket4);
         //repo.save(ticket5);
 
-        Ticket [] expected = {ticket1};
-        Ticket [] actual = repo.getTickets();
+        Ticket[] expected = {ticket1};
+        Ticket[] actual = repo.getTickets();
 
-        Assertions.assertArrayEquals (expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
 
 
     }
 
 
     @Test
-    public void shouldSaveAll () {
+    public void shouldSaveAll() {
         TicketRepository repo = new TicketRepository();
         repo.save(ticket1);
         repo.save(ticket2);
@@ -44,25 +44,25 @@ public class TicketRepositoryTest {
         repo.save(ticket4);
         repo.save(ticket5);
 
-        Ticket [] expected = {ticket1, ticket2, ticket3, ticket4, ticket5};
-        Ticket [] actual = repo.getTickets();
+        Ticket[] expected = {ticket1, ticket2, ticket3, ticket4, ticket5};
+        Ticket[] actual = repo.getTickets();
 
-        Assertions.assertArrayEquals (expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
 
     }
 
     @Test
-    public void removeById () {
+    public void removeById() {
         TicketRepository repo = new TicketRepository();
         repo.save(ticket1);
         repo.save(ticket2);
         repo.save(ticket3);
         repo.removeById(3);
 
-        Ticket [] expected = {ticket1, ticket2};
-        Ticket [] actual = repo.getTickets();
+        Ticket[] expected = {ticket1, ticket2};
+        Ticket[] actual = repo.getTickets();
 
-        Assertions.assertArrayEquals (expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
 

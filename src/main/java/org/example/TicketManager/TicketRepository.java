@@ -1,4 +1,5 @@
 package org.example.TicketManager;
+
 public class TicketRepository {
 
     private Ticket[] tickets = new Ticket[0];
@@ -24,11 +25,11 @@ public class TicketRepository {
         tickets = tmp;
     }
 
-    public Ticket [] getTickets () {
+    public Ticket[] getTickets() {
         return tickets;
     }
 
-    public Ticket [] findAll() {
+    public Ticket[] findAll() {
         return tickets;
     }
 }
