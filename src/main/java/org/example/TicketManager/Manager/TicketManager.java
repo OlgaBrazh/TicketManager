@@ -19,7 +19,7 @@ public class TicketManager {
     }
 
     public boolean matches(Ticket ticket, String search1, String search2) {
-        if (ticket.getDepartureAirport().contains(search1)&&ticket.getArrivalAirport().contains(search2)){
+        if (ticket.getDepartureAirport().contains(search1) && ticket.getArrivalAirport().contains(search2)) {
             return true;
         } else {
             return false;
@@ -42,11 +42,12 @@ public class TicketManager {
 
             }
 
-        } Arrays.sort (result);
+        }
+        Arrays.sort(result);
         return result;
     }
 
-    public Ticket[] searchBy(String from, String to, Comparator<Ticket>comparator) {
+    public Ticket[] searchBy(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] result = new Ticket[0]; // тут будем хранить подошедшие запросу продукты
         for (Ticket ticket : repo.findAll()) {
             if (matches(ticket, from, to)) {
@@ -60,7 +61,8 @@ public class TicketManager {
 
             }
 
-        } Arrays.sort (result, comparator);
+        }
+        Arrays.sort(result, comparator);
         return result;
     }
 }

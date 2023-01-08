@@ -1,7 +1,8 @@
 package org.example.TicketManager;
+
 import javax.print.DocFlavor;
 
-public class Ticket implements Comparable <Ticket> {
+public class Ticket implements Comparable<Ticket> {
     private int id;
     private int price;
     private String departureAirport;
