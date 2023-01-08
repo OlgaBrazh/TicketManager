@@ -3,8 +3,7 @@ package org.example.TicketManager.Manager;
 import org.example.TicketManager.Ticket;
 import org.example.TicketManager.TicketRepository;
 import org.junit.jupiter.api.Assertions;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 public class TicketManagerTest {
     Ticket ticket1 = new Ticket(1, 15000, "DME", "UFA", 280);

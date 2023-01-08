@@ -2,7 +2,6 @@ package org.example.TicketManager;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.Test;
 
 public class TicketRepositoryTest {
 
